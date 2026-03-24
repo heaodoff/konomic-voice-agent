@@ -446,12 +446,36 @@ function TestimonialsSection() {
 // ─── INTEGRATIONS (WORLD MAP) ───────────────────────────
 function IntegrationsSection() {
   const pmsLogos = [
-    "Cloudbeds",
-    "Mews",
-    "Opera PMS",
-    "Little Hotelier",
-    "Guesty",
-    "Hostaway",
+    {
+      name: "Cloudbeds",
+      logo: "https://www.cloudbeds.com/wp-content/uploads/2025/08/logo-horizontal-white.svg",
+      invert: false,
+    },
+    {
+      name: "Mews",
+      logo: "https://logotyp.us/file/mews.svg",
+      invert: true,
+    },
+    {
+      name: "Oracle Opera",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg",
+      invert: false,
+    },
+    {
+      name: "Little Hotelier",
+      logo: "https://www.littlehotelier.com/wp-content/themes/littlehotelier/dist/images/lh_h_black_8cd6c5b3.svg",
+      invert: true,
+    },
+    {
+      name: "Guesty",
+      logo: "https://cms-cdn.guesty.com/wp-content/uploads/2025/10/guesty-logo-new.svg",
+      invert: true,
+    },
+    {
+      name: "Hostaway",
+      logo: "",
+      invert: false,
+    },
   ];
 
   return (
@@ -476,18 +500,26 @@ function IntegrationsSection() {
         </motion.div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 mb-12">
-          {pmsLogos.map((name, i) => (
+          {pmsLogos.map((item, i) => (
             <motion.div
-              key={name}
-              className="flex items-center justify-center py-6 px-4 bg-card rounded-2xl border border-border"
+              key={item.name}
+              className="flex flex-col items-center justify-center gap-3 py-6 px-4 bg-card rounded-2xl border border-border"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: i * 0.05 }}
             >
-              <span className="text-sm font-semibold text-foreground">
-                {name}
-              </span>
+              {item.logo ? (
+                <img
+                  src={item.logo}
+                  alt={item.name}
+                  className={`h-6 w-auto max-w-[100px] object-contain ${item.invert ? "brightness-0 invert" : ""}`}
+                />
+              ) : (
+                <span className="text-sm font-semibold text-foreground">
+                  {item.name}
+                </span>
+              )}
             </motion.div>
           ))}
         </div>
