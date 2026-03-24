@@ -20,7 +20,7 @@ import { WorldMap } from "@/components/ui/world-map";
 import { FaqsSection } from "@/components/ui/faqs-1";
 import { SplineScene } from "@/components/ui/splite";
 import { Spotlight } from "@/components/ui/spotlight";
-import { EtheralShadow } from "@/components/ui/etheral-shadow";
+import { DottedSurface } from "@/components/ui/dotted-surface";
 import { ButtonWithIcon } from "@/components/ui/button-with-icon";
 import Image from "next/image";
 
@@ -686,14 +686,7 @@ function Footer() {
 export default function Home() {
   return (
     <>
-      <div className="fixed inset-0 -z-10 pointer-events-none">
-        <EtheralShadow
-          color="rgba(99, 102, 241, 0.6)"
-          animation={{ scale: 80, speed: 60 }}
-          noise={{ opacity: 0.8, scale: 1.2 }}
-          sizing="fill"
-        />
-      </div>
+      <DottedSurface />
       <main className="flex-1 relative">
         <Navbar1
           items={[
