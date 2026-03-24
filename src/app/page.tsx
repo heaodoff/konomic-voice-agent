@@ -21,6 +21,7 @@ import { FaqsSection } from "@/components/ui/faqs-1";
 import { SplineScene } from "@/components/ui/splite";
 import { Spotlight } from "@/components/ui/spotlight";
 import { EtheralShadow } from "@/components/ui/etheral-shadow";
+import { ButtonWithIcon } from "@/components/ui/button-with-icon";
 import Image from "next/image";
 
 // ─── HERO ───────────────────────────────────────────────
@@ -75,12 +76,7 @@ function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
-            <a
-              href="#pricing"
-              className="inline-flex items-center justify-center px-8 py-3.5 text-base font-semibold text-white bg-indigo-600 rounded-full hover:bg-indigo-500 transition-colors shadow-lg shadow-indigo-600/20"
-            >
-              Pricing
-            </a>
+            <ButtonWithIcon href="#pricing">Get Started</ButtonWithIcon>
             <a
               href="tel:+15075411684"
               className="inline-flex items-center justify-center gap-2 px-8 py-3.5 text-base font-semibold text-foreground bg-transparent rounded-full border border-border hover:bg-accent transition-colors"
@@ -632,12 +628,7 @@ function FinalCTASection() {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <a
-            href="#pricing"
-            className="inline-flex items-center justify-center px-8 py-3.5 text-base font-semibold text-white bg-indigo-600 rounded-full hover:bg-indigo-500 transition-colors shadow-lg shadow-indigo-600/20"
-          >
-            Pricing
-          </a>
+          <ButtonWithIcon href="#pricing">Get Started</ButtonWithIcon>
           <a
             href="tel:+15075411684"
             className="inline-flex items-center justify-center gap-2 px-8 py-3.5 text-base font-semibold text-foreground border border-border rounded-full hover:bg-accent transition-colors"
@@ -710,7 +701,7 @@ export default function Home() {
             { label: "Pricing", href: "#pricing" },
             { label: "Testimonials", href: "#testimonials" },
           ]}
-          ctaText="Pricing"
+          ctaText="Get Started"
           ctaHref="#pricing"
         />
 
