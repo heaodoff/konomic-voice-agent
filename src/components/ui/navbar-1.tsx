@@ -4,6 +4,7 @@ import * as React from "react"
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X } from "lucide-react"
+import Image from "next/image"
 
 interface NavItem {
   label: string;
@@ -37,13 +38,15 @@ const Navbar1 = ({
         <div className="flex items-center">
           {brand || (
             <motion.div
-              className="font-bold text-lg mr-6"
+              className="mr-6"
               initial={{ scale: 0.8 }}
               animate={{ scale: 1 }}
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.3 }}
             >
-              <a href="#" className="text-foreground">Konomic Voice Agent</a>
+              <a href="#">
+                <Image src="/logo.svg" alt="Konomic" width={120} height={24} className="h-5 w-auto" />
+              </a>
             </motion.div>
           )}
         </div>

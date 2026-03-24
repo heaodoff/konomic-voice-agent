@@ -20,6 +20,7 @@ import { WorldMap } from "@/components/ui/world-map";
 import { FaqsSection } from "@/components/ui/faqs-1";
 import { SplineScene } from "@/components/ui/splite";
 import { Spotlight } from "@/components/ui/spotlight";
+import Image from "next/image";
 
 // ─── HERO ───────────────────────────────────────────────
 function HeroSection() {
@@ -622,10 +623,12 @@ function Footer() {
     <footer className="py-12 px-4 border-t border-border">
       <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
         <div>
-          <div className="font-bold text-lg text-foreground">Konomic Voice Agent</div>
-          <p className="text-sm text-muted-foreground mt-1">
-            AI voice agent for hotel reservations
-          </p>
+          <div>
+            <Image src="/logo.svg" alt="Konomic" width={140} height={28} className="h-6 w-auto" />
+            <p className="text-sm text-muted-foreground mt-2">
+              AI voice agent for hotel reservations
+            </p>
+          </div>
         </div>
         <nav className="flex items-center gap-8">
           {[
