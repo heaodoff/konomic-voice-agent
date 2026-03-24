@@ -624,7 +624,10 @@ function Footer() {
       <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
         <div>
           <div>
-            <Image src="/logo.svg" alt="Konomic" width={140} height={28} className="h-6 w-auto" />
+            <a href="#" className="flex items-center gap-2.5">
+              <Image src="/logo-icon.svg" alt="Konomic" width={32} height={32} className="h-8 w-auto" />
+              <span className="font-bold text-foreground text-lg">Konomic Voice AI</span>
+            </a>
             <p className="text-sm text-muted-foreground mt-2">
               AI voice agent for hotel reservations
             </p>

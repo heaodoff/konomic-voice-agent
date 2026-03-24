@@ -44,8 +44,9 @@ const Navbar1 = ({
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.3 }}
             >
-              <a href="#">
-                <Image src="/logo.svg" alt="Konomic" width={120} height={24} className="h-5 w-auto" />
+              <a href="#" className="flex items-center gap-2.5">
+                <Image src="/logo-icon.svg" alt="Konomic" width={32} height={32} className="h-8 w-auto" />
+                <span className="font-bold text-foreground text-base">Konomic Voice AI</span>
               </a>
             </motion.div>
           )}
