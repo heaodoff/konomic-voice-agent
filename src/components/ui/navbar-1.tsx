@@ -5,6 +5,7 @@ import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X } from "lucide-react"
 import Image from "next/image"
+import { ButtonWithIcon } from "@/components/ui/button-with-icon"
 
 interface NavItem {
   label: string;
@@ -70,20 +71,9 @@ const Navbar1 = ({
         </nav>
 
         {/* Desktop CTA Button */}
-        <motion.div
-          className="hidden md:block"
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.3, delay: 0.2 }}
-          whileHover={{ scale: 1.05 }}
-        >
-          <a
-            href={ctaHref}
-            className="inline-flex items-center justify-center px-5 py-2 text-sm text-white bg-indigo-600 rounded-full hover:bg-indigo-500 transition-colors"
-          >
-            {ctaText}
-          </a>
-        </motion.div>
+        <div className="hidden md:block">
+          <ButtonWithIcon href={ctaHref}>{ctaText}</ButtonWithIcon>
+        </div>
 
         {/* Mobile Menu Button */}
         <motion.button className="md:hidden flex items-center" onClick={toggleMenu} whileTap={{ scale: 0.9 }}>
@@ -132,14 +122,9 @@ const Navbar1 = ({
                 transition={{ delay: 0.5 }}
                 exit={{ opacity: 0, y: 20 }}
                 className="pt-6"
+                onClick={toggleMenu}
               >
-                <a
-                  href={ctaHref}
-                  className="inline-flex items-center justify-center w-full px-5 py-3 text-base text-white bg-indigo-600 rounded-full hover:bg-indigo-500 transition-colors"
-                  onClick={toggleMenu}
-                >
-                  {ctaText}
-                </a>
+                <ButtonWithIcon href={ctaHref}>{ctaText}</ButtonWithIcon>
               </motion.div>
             </div>
           </motion.div>
