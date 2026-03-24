@@ -1,65 +1,697 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import { motion } from "framer-motion";
+import {
+  Phone,
+  Globe,
+  CalendarCheck,
+  ShieldCheck,
+  ArrowRightLeft,
+  BarChart3,
+  Zap,
+  Settings,
+  Rocket,
+} from "lucide-react";
+
+import { Navbar1 } from "@/components/ui/navbar-1";
+import { PricingSection } from "@/components/ui/pricing";
+import { TestimonialsColumn, type Testimonial } from "@/components/ui/testimonials-columns-1";
+import { WorldMap } from "@/components/ui/world-map";
+import { FaqsSection } from "@/components/ui/faqs-1";
+import { SplineScene } from "@/components/ui/splite";
+import { Spotlight } from "@/components/ui/spotlight";
+
+// ─── HERO ───────────────────────────────────────────────
+function HeroSection() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <section className="relative min-h-screen flex flex-col overflow-hidden">
+      {/* Spotlight effect */}
+      <Spotlight className="-top-40 left-0 md:left-60 md:-top-20" fill="white" />
+
+      <div className="flex-1 flex flex-col lg:flex-row items-center max-w-6xl mx-auto px-4 pt-28 pb-12 w-full">
+        {/* Left: Text content */}
+        <div className="flex-1 relative z-10 flex flex-col justify-center lg:pr-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <span className="inline-flex items-center gap-2 rounded-full border border-indigo-500/30 bg-indigo-500/10 px-4 py-1.5 text-sm font-medium text-indigo-400 mb-8">
+              <Phone className="h-4 w-4" />
+              AI Voice Agent for Hotels
+            </span>
+          </motion.div>
+
+          <motion.h1
+            className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-foreground leading-tight"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
+            Never miss a
+            <br />
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400">
+              reservation call
+            </span>
+            <br />
+            again
+          </motion.h1>
+
+          <motion.p
+            className="mt-6 text-lg sm:text-xl text-muted-foreground max-w-lg leading-relaxed"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            AI that answers your hotel phone 24/7 in any language. Takes real
+            bookings. Transfers to staff when needed. Pays for itself in days.
+          </motion.p>
+
+          <motion.div
+            className="mt-10 flex flex-col sm:flex-row items-start gap-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
+            <a
+              href="#pricing"
+              className="inline-flex items-center justify-center px-8 py-3.5 text-base font-semibold text-white bg-indigo-600 rounded-full hover:bg-indigo-500 transition-colors shadow-lg shadow-indigo-600/20"
+            >
+              Pricing
+            </a>
+            <a
+              href="tel:+15075411684"
+              className="inline-flex items-center justify-center gap-2 px-8 py-3.5 text-base font-semibold text-foreground bg-transparent rounded-full border border-border hover:bg-accent transition-colors"
+            >
+              <Phone className="h-4 w-4" />
+              Call Our AI Demo
+            </a>
+          </motion.div>
+
+          <motion.p
+            className="mt-4 text-sm text-muted-foreground"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
+            No setup fee &middot; Cancel anytime
+          </motion.p>
+        </div>
+
+        {/* Right: 3D Robot */}
+        <motion.div
+          className="flex-1 relative h-[400px] lg:h-[550px] w-full"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+        >
+          <SplineScene
+            scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
+            className="w-full h-full"
+          />
+        </motion.div>
+      </div>
+
+      {/* Metrics bar */}
+      <motion.div
+        className="max-w-6xl mx-auto w-full px-4 pb-16"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.5 }}
+      >
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 border border-border rounded-2xl p-8 bg-card/50 backdrop-blur-sm">
+          {[
+            { value: "<1s", label: "Answer time" },
+            { value: "87%", label: "Calls automated" },
+            { value: "130+", label: "Languages" },
+            { value: "24/7", label: "Availability" },
+          ].map((metric) => (
+            <div key={metric.label} className="text-center">
+              <div className="text-3xl sm:text-4xl font-bold text-foreground">
+                {metric.value}
+              </div>
+              <div className="mt-1 text-sm text-muted-foreground">{metric.label}</div>
+            </div>
+          ))}
+        </div>
+      </motion.div>
+    </section>
+  );
+}
+
+// ─── FEATURES ───────────────────────────────────────────
+const features = [
+  {
+    icon: <Zap className="h-6 w-6" />,
+    title: "Answer Every Call",
+    description:
+      "AI picks up in under 1 second. No hold music, no voicemail, no missed revenue.",
+  },
+  {
+    icon: <Globe className="h-6 w-6" />,
+    title: "Any Language",
+    description:
+      "Auto-detects caller language. English, Spanish, French, Russian, and more.",
+  },
+  {
+    icon: <CalendarCheck className="h-6 w-6" />,
+    title: "Real Bookings",
+    description:
+      "Creates actual reservations in your PMS. Not just a FAQ bot.",
+  },
+  {
+    icon: <ShieldCheck className="h-6 w-6" />,
+    title: "Never Invents Data",
+    description:
+      "Every rate, availability, and booking is verified through your hotel system.",
+  },
+  {
+    icon: <ArrowRightLeft className="h-6 w-6" />,
+    title: "Smart Handoff",
+    description:
+      "Transfers to staff with full context when needed. No blind transfers.",
+  },
+  {
+    icon: <BarChart3 className="h-6 w-6" />,
+    title: "Full Analytics",
+    description:
+      "Every call recorded, transcribed, and analyzed. See what guests ask for.",
+  },
+];
+
+function FeaturesSection() {
+  return (
+    <section id="features" className="py-24 px-4 bg-muted/50">
+      <div className="max-w-6xl mx-auto">
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <span className="inline-flex items-center rounded-full border border-border px-3 py-1 text-sm font-medium text-muted-foreground mb-4">
+            Features
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
+            Everything you need to automate calls
+          </h2>
+          <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
+            Purpose-built for hotel reservations. Not a generic chatbot.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {features.map((feature, i) => (
+            <motion.div
+              key={feature.title}
+              className="bg-card rounded-2xl border border-border p-8 hover:border-indigo-500/30 transition-colors"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: i * 0.1 }}
+            >
+              <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 mb-5">
+                {feature.icon}
+              </div>
+              <h3 className="text-lg font-semibold text-foreground mb-2">
+                {feature.title}
+              </h3>
+              <p className="text-muted-foreground leading-relaxed">
+                {feature.description}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── HOW IT WORKS ───────────────────────────────────────
+const steps = [
+  {
+    icon: <Settings className="h-6 w-6" />,
+    step: "01",
+    title: "Connect",
+    description:
+      "Link your Twilio phone number and PMS (Cloudbeds, Mews, Opera).",
+  },
+  {
+    icon: <Zap className="h-6 w-6" />,
+    step: "02",
+    title: "Configure",
+    description:
+      "Set your hotel policies, greeting, room types, and handoff rules.",
+  },
+  {
+    icon: <Rocket className="h-6 w-6" />,
+    step: "03",
+    title: "Go Live",
+    description:
+      "AI starts answering calls immediately. Monitor everything from the dashboard.",
+  },
+];
+
+function HowItWorksSection() {
+  return (
+    <section className="py-24 px-4">
+      <div className="max-w-6xl mx-auto">
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <span className="inline-flex items-center rounded-full border border-border px-3 py-1 text-sm font-medium text-muted-foreground mb-4">
+            How it works
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
+            Live in 30 minutes
+          </h2>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          {steps.map((step, i) => (
+            <motion.div
+              key={step.title}
+              className="relative text-center"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: i * 0.15 }}
+            >
+              <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-indigo-500/10 text-indigo-400 mb-5">
+                {step.icon}
+              </div>
+              <div className="text-xs font-bold text-indigo-400 uppercase tracking-widest mb-2">
+                Step {step.step}
+              </div>
+              <h3 className="text-xl font-semibold text-foreground mb-3">
+                {step.title}
+              </h3>
+              <p className="text-muted-foreground leading-relaxed">
+                {step.description}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── PRICING DATA ───────────────────────────────────────
+const pricingPlans = [
+  {
+    name: "Starter",
+    price: "299",
+    yearlyPrice: "239",
+    period: "month",
+    features: [
+      "1 hotel",
+      "500 minutes/mo",
+      "Then $0.20/min",
+      "Mock PMS",
+      "Email support",
+    ],
+    description: "500 minutes included. Perfect to get started.",
+    buttonText: "Get Started",
+    href: "#",
+  },
+  {
+    name: "Growth",
+    price: "499",
+    yearlyPrice: "399",
+    period: "month",
+    features: [
+      "Up to 5 hotels",
+      "1,500 minutes/mo",
+      "Then $0.15/min",
+      "Cloudbeds integration",
+      "Priority support",
+      "Custom greeting",
+    ],
+    description: "1,500 minutes included. For growing hotel groups.",
+    buttonText: "Get Started",
+    href: "#",
+    isPopular: true,
+  },
+  {
+    name: "Enterprise",
+    price: "999",
+    yearlyPrice: "799",
+    period: "month",
+    features: [
+      "Unlimited hotels",
+      "5,000 minutes/mo",
+      "Then $0.10/min",
+      "Any PMS integration",
+      "Dedicated account manager",
+      "Custom AI training",
+      "SLA guarantee",
+    ],
+    description: "5,000 minutes included. Full customization.",
+    buttonText: "Contact Sales",
+    href: "#",
+  },
+];
+
+// ─── TESTIMONIALS ───────────────────────────────────────
+const testimonials: Testimonial[] = [
+  {
+    text: "We went from missing 40% of calls to answering 100%. Our reservation revenue increased by $12K in the first month.",
+    image: "https://randomuser.me/api/portraits/women/44.jpg",
+    name: "Maria Garcia",
+    role: "Sunset Beach Resort",
+  },
+  {
+    text: "The AI handles Spanish and English callers flawlessly. Our bilingual guests love it.",
+    image: "https://randomuser.me/api/portraits/men/32.jpg",
+    name: "James Chen",
+    role: "The Grand Pacific",
+  },
+  {
+    text: "Setup took 30 minutes. The AI was taking real reservations the same day.",
+    image: "https://randomuser.me/api/portraits/women/68.jpg",
+    name: "Sophie Martin",
+    role: "Hotel Belleville",
+  },
+  {
+    text: "Our front desk staff can finally focus on in-person guests instead of being tied to the phone.",
+    image: "https://randomuser.me/api/portraits/men/75.jpg",
+    name: "Ahmed Hassan",
+    role: "Desert Palm Hotel",
+  },
+  {
+    text: "The handoff to human agents is seamless. Callers don't even notice the transition.",
+    image: "https://randomuser.me/api/portraits/women/90.jpg",
+    name: "Lisa Park",
+    role: "Oceanview Suites",
+  },
+  {
+    text: "ROI was immediate. The AI pays for itself with just 2 bookings per month.",
+    image: "https://randomuser.me/api/portraits/men/46.jpg",
+    name: "Roberto Silva",
+    role: "Casa Colonial",
+  },
+];
+
+const firstColumn = testimonials.slice(0, 2);
+const secondColumn = testimonials.slice(2, 4);
+const thirdColumn = testimonials.slice(4, 6);
+
+function TestimonialsSection() {
+  return (
+    <section id="testimonials" className="py-24 relative">
+      <div className="max-w-6xl z-10 mx-auto px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true }}
+          className="flex flex-col items-center justify-center max-w-[540px] mx-auto"
+        >
+          <span className="inline-flex items-center rounded-full border border-border px-3 py-1 text-sm font-medium text-muted-foreground mb-4">
+            Testimonials
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
+            What our customers say
+          </h2>
+          <p className="text-center mt-4 text-muted-foreground text-lg">
+            Hotels around the world trust Konomic Voice Agent.
+          </p>
+        </motion.div>
+
+        <div className="flex justify-center gap-6 mt-12 [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] max-h-[740px] overflow-hidden">
+          <TestimonialsColumn testimonials={firstColumn} duration={15} />
+          <TestimonialsColumn
+            testimonials={secondColumn}
+            className="hidden md:block"
+            duration={19}
+          />
+          <TestimonialsColumn
+            testimonials={thirdColumn}
+            className="hidden lg:block"
+            duration={17}
+          />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── INTEGRATIONS (WORLD MAP) ───────────────────────────
+function IntegrationsSection() {
+  const pmsLogos = [
+    "Cloudbeds",
+    "Mews",
+    "Opera PMS",
+    "Little Hotelier",
+    "Guesty",
+    "Hostaway",
+  ];
+
+  return (
+    <section className="py-24 px-4 bg-muted/50">
+      <div className="max-w-6xl mx-auto">
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <span className="inline-flex items-center rounded-full border border-border px-3 py-1 text-sm font-medium text-muted-foreground mb-4">
+            Integrations
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
+            Works with your PMS
+          </h2>
+          <p className="mt-4 text-lg text-muted-foreground">
+            Connect to any major property management system.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 mb-12">
+          {pmsLogos.map((name, i) => (
+            <motion.div
+              key={name}
+              className="flex items-center justify-center py-6 px-4 bg-card rounded-2xl border border-border"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.3, delay: i * 0.05 }}
+            >
+              <span className="text-sm font-semibold text-foreground">
+                {name}
+              </span>
+            </motion.div>
+          ))}
+        </div>
+
+        <WorldMap
+          lineColor="#818cf8"
+          dots={[
+            {
+              start: { lat: 40.7128, lng: -74.006 },
+              end: { lat: 51.5074, lng: -0.1278 },
+            },
+            {
+              start: { lat: 51.5074, lng: -0.1278 },
+              end: { lat: 25.2048, lng: 55.2708 },
+            },
+            {
+              start: { lat: 25.2048, lng: 55.2708 },
+              end: { lat: 35.6762, lng: 139.6503 },
+            },
+            {
+              start: { lat: 40.7128, lng: -74.006 },
+              end: { lat: -33.8688, lng: 151.2093 },
+            },
+            {
+              start: { lat: 48.8566, lng: 2.3522 },
+              end: { lat: -22.9068, lng: -43.1729 },
+            },
+          ]}
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+      </div>
+    </section>
+  );
+}
+
+// ─── FAQ ────────────────────────────────────────────────
+const faqQuestions = [
+  {
+    id: "item-1",
+    title: "How quickly can I get started?",
+    content:
+      "Most hotels are live within 30 minutes. Connect your Twilio number, configure your settings, and the AI starts answering calls immediately.",
+  },
+  {
+    id: "item-2",
+    title: "What languages does the AI support?",
+    content:
+      "The AI auto-detects the caller's language and responds fluently in over 130 languages, including English, Spanish, French, German, Russian, Arabic, Chinese, Japanese, and many more.",
+  },
+  {
+    id: "item-3",
+    title: "Does it create real bookings or just take messages?",
+    content:
+      "Real bookings. The AI connects to your PMS and creates actual reservations with verified availability and rates. It's not a voicemail or FAQ bot.",
+  },
+  {
+    id: "item-4",
+    title: "What happens when the AI can't handle a request?",
+    content:
+      "Smart handoff. The AI transfers the call to your staff with full context — the caller's name, what they asked for, and any preferences mentioned. No blind transfers.",
+  },
+  {
+    id: "item-5",
+    title: "Which PMS systems do you integrate with?",
+    content:
+      "We integrate with Cloudbeds, Mews, Opera PMS, Little Hotelier, Guesty, and Hostaway. Enterprise plans support custom integrations with any PMS.",
+  },
+  {
+    id: "item-6",
+    title: "How does billing work?",
+    content:
+      "You choose a plan with included minutes. If you go over, extra minutes are billed at the per-minute rate for your plan. No setup fee, no commitment. Cancel anytime.",
+  },
+  {
+    id: "item-7",
+    title: "Can the AI invent rates or availability?",
+    content:
+      "Never. Every rate, room availability, and booking detail is verified through your PMS in real-time. The AI only shares confirmed information.",
+  },
+];
+
+// ─── FINAL CTA ──────────────────────────────────────────
+function FinalCTASection() {
+  return (
+    <section className="py-24 px-4 bg-indigo-600/10 border-y border-indigo-500/20">
+      <div className="max-w-3xl mx-auto text-center">
+        <motion.h2
+          className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          Ready to never miss a call?
+        </motion.h2>
+        <motion.p
+          className="mt-4 text-lg text-muted-foreground"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+        >
+          No setup fee, no commitment. Get started in minutes.
+        </motion.p>
+        <motion.div
+          className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <a
+            href="#pricing"
+            className="inline-flex items-center justify-center px-8 py-3.5 text-base font-semibold text-white bg-indigo-600 rounded-full hover:bg-indigo-500 transition-colors shadow-lg shadow-indigo-600/20"
+          >
+            Pricing
+          </a>
+          <a
+            href="tel:+15075411684"
+            className="inline-flex items-center justify-center gap-2 px-8 py-3.5 text-base font-semibold text-foreground border border-border rounded-full hover:bg-accent transition-colors"
+          >
+            <Phone className="h-4 w-4" />
+            Call +1 (507) 541-1684
+          </a>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+// ─── FOOTER ─────────────────────────────────────────────
+function Footer() {
+  return (
+    <footer className="py-12 px-4 border-t border-border">
+      <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div>
+          <div className="font-bold text-lg text-foreground">Konomic Voice Agent</div>
+          <p className="text-sm text-muted-foreground mt-1">
+            AI voice agent for hotel reservations
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+        <nav className="flex items-center gap-8">
+          {[
+            { label: "Features", href: "#features" },
+            { label: "Pricing", href: "#pricing" },
+            { label: "Testimonials", href: "#testimonials" },
+            { label: "Dashboard", href: "#" },
+          ].map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+        <p className="text-sm text-muted-foreground">
+          &copy; 2026 Konomic Digital SL. All rights reserved.
+        </p>
+      </div>
+    </footer>
+  );
+}
+
+// ─── PAGE ───────────────────────────────────────────────
+export default function Home() {
+  return (
+    <main className="flex-1">
+      <Navbar1
+        items={[
+          { label: "Features", href: "#features" },
+          { label: "Pricing", href: "#pricing" },
+          { label: "Testimonials", href: "#testimonials" },
+        ]}
+        ctaText="Pricing"
+        ctaHref="#pricing"
+      />
+
+      <HeroSection />
+      <FeaturesSection />
+      <HowItWorksSection />
+
+      <div id="pricing" className="bg-muted/50">
+        <PricingSection
+          plans={pricingPlans}
+          title="Simple, Transparent Pricing"
+          description="No setup fee. No commitment. Cancel anytime."
+        />
+      </div>
+
+      <TestimonialsSection />
+      <IntegrationsSection />
+
+      <div>
+        <FaqsSection
+          title="Frequently Asked Questions"
+          description="Everything you need to know about Konomic Voice Agent."
+          questions={faqQuestions}
+          contactText="support team"
+          contactHref="mailto:support@konomic.com"
+        />
+      </div>
+
+      <FinalCTASection />
+      <Footer />
+    </main>
   );
 }
