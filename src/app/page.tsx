@@ -20,6 +20,7 @@ import { WorldMap } from "@/components/ui/world-map";
 import { FaqsSection } from "@/components/ui/faqs-1";
 import { SplineScene } from "@/components/ui/splite";
 import { Spotlight } from "@/components/ui/spotlight";
+import { DottedSurface } from "@/components/ui/dotted-surface";
 import Image from "next/image";
 
 // ─── HERO ───────────────────────────────────────────────
@@ -182,7 +183,7 @@ const features = [
 
 function FeaturesSection() {
   return (
-    <section id="features" className="py-24 px-4 bg-muted/50">
+    <section id="features" className="py-24 px-4">
       <div className="max-w-6xl mx-auto">
         <motion.div
           className="text-center mb-16"
@@ -480,7 +481,7 @@ function IntegrationsSection() {
   ];
 
   return (
-    <section className="py-24 px-4 bg-muted/50">
+    <section className="py-24 px-4">
       <div className="max-w-6xl mx-auto">
         <motion.div
           className="text-center mb-16"
@@ -604,7 +605,7 @@ const faqQuestions = [
 // ─── FINAL CTA ──────────────────────────────────────────
 function FinalCTASection() {
   return (
-    <section className="py-24 px-4 bg-indigo-600/10 border-y border-indigo-500/20">
+    <section className="py-24 px-4 border-y border-border">
       <div className="max-w-3xl mx-auto text-center">
         <motion.h2
           className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground"
@@ -693,33 +694,34 @@ function Footer() {
 // ─── PAGE ───────────────────────────────────────────────
 export default function Home() {
   return (
-    <main className="flex-1">
-      <Navbar1
-        items={[
-          { label: "Features", href: "#features" },
-          { label: "Pricing", href: "#pricing" },
-          { label: "Testimonials", href: "#testimonials" },
-        ]}
-        ctaText="Pricing"
-        ctaHref="#pricing"
-      />
-
-      <HeroSection />
-      <FeaturesSection />
-      <HowItWorksSection />
-
-      <div id="pricing" className="bg-muted/50">
-        <PricingSection
-          plans={pricingPlans}
-          title="Simple, Transparent Pricing"
-          description="No setup fee. No commitment. Cancel anytime."
+    <>
+      <DottedSurface />
+      <main className="flex-1 relative">
+        <Navbar1
+          items={[
+            { label: "Features", href: "#features" },
+            { label: "Pricing", href: "#pricing" },
+            { label: "Testimonials", href: "#testimonials" },
+          ]}
+          ctaText="Pricing"
+          ctaHref="#pricing"
         />
-      </div>
 
-      <TestimonialsSection />
-      <IntegrationsSection />
+        <HeroSection />
+        <FeaturesSection />
+        <HowItWorksSection />
 
-      <div>
+        <div id="pricing">
+          <PricingSection
+            plans={pricingPlans}
+            title="Simple, Transparent Pricing"
+            description="No setup fee. No commitment. Cancel anytime."
+          />
+        </div>
+
+        <TestimonialsSection />
+        <IntegrationsSection />
+
         <FaqsSection
           title="Frequently Asked Questions"
           description="Everything you need to know about Konomic Voice Agent."
@@ -727,10 +729,10 @@ export default function Home() {
           contactText="support team"
           contactHref="mailto:support@konomic.com"
         />
-      </div>
 
-      <FinalCTASection />
-      <Footer />
-    </main>
+        <FinalCTASection />
+        <Footer />
+      </main>
+    </>
   );
 }
