@@ -455,6 +455,7 @@ function IntegrationsSection() {
       name: "Mews",
       logo: "https://logotyp.us/file/mews.svg",
       invert: true,
+      large: true,
     },
     {
       name: "Oracle Opera",
@@ -513,7 +514,7 @@ function IntegrationsSection() {
                 <img
                   src={item.logo}
                   alt={item.name}
-                  className={`h-6 w-auto max-w-[100px] object-contain ${item.invert ? "brightness-0 invert" : ""}`}
+                  className={`${item.large ? "h-10" : "h-6"} w-auto max-w-[100px] object-contain ${item.invert ? "brightness-0 invert" : ""}`}
                 />
               ) : (
                 <span className="text-sm font-semibold text-foreground">
