@@ -8,22 +8,8 @@ export const FlowHoverButton: React.FC<
     href?: string
   }
 > = ({ icon, children, hoverText, href, className, ...props }) => {
-  const inner = (
-    <>
-      {icon}
-      <span className="transition-all duration-500 group-hover:opacity-0 group-hover:translate-y-2">
-        {children}
-      </span>
-      {hoverText && (
-        <span className="absolute inset-0 flex items-center justify-center opacity-0 -translate-y-2 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0">
-          {hoverText}
-        </span>
-      )}
-    </>
-  )
-
   const classes = cn(
-    `group relative cursor-pointer z-0 flex items-center justify-center gap-2 overflow-hidden rounded-full
+    `group relative cursor-pointer z-0 flex items-center justify-center overflow-hidden rounded-full
     border border-border bg-card
     px-6 py-3.5 font-semibold text-foreground transition-all duration-500
     before:absolute before:inset-0 before:-z-10 before:translate-x-[150%] before:translate-y-[150%] before:scale-[2.5]
@@ -32,17 +18,25 @@ export const FlowHoverButton: React.FC<
     className
   )
 
+  const content = (
+    <>
+      {/* Default state */}
+      <span className="relative z-10 flex items-center gap-2 transition-all duration-500 group-hover:opacity-0 group-hover:scale-95">
+        {icon}
+        {children}
+      </span>
+      {/* Hover state */}
+      {hoverText && (
+        <span className="absolute inset-0 z-10 flex items-center justify-center text-sm font-semibold opacity-0 scale-105 transition-all duration-500 group-hover:opacity-100 group-hover:scale-100">
+          {hoverText}
+        </span>
+      )}
+    </>
+  )
+
   if (href) {
-    return (
-      <a href={href} className={classes}>
-        {inner}
-      </a>
-    )
+    return <a href={href} className={classes}>{content}</a>
   }
 
-  return (
-    <button className={classes} {...props}>
-      {inner}
-    </button>
-  )
+  return <button className={classes} {...props}>{content}</button>
 }
