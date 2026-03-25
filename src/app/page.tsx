@@ -16,7 +16,7 @@ import {
 import { Navbar1 } from "@/components/ui/navbar-1";
 import { PricingSection } from "@/components/ui/pricing";
 import { TestimonialsColumn, type Testimonial } from "@/components/ui/testimonials-columns-1";
-import RotatingEarth from "@/components/ui/wireframe-dotted-globe";
+import { Globe } from "@/components/ui/cobe-globe";
 import { FaqsSection } from "@/components/ui/faqs-1";
 import { SplineScene } from "@/components/ui/splite";
 import { Spotlight } from "@/components/ui/spotlight";
@@ -522,7 +522,32 @@ function IntegrationsSection() {
           ))}
         </div>
 
-        <RotatingEarth width={1100} height={600} className="mx-auto" />
+        <div className="max-w-lg mx-auto">
+          <Globe
+            markers={[
+              { id: "nyc", location: [40.7128, -74.006], label: "New York" },
+              { id: "london", location: [51.5074, -0.1278], label: "London" },
+              { id: "dubai", location: [25.2048, 55.2708], label: "Dubai" },
+              { id: "tokyo", location: [35.6762, 139.6503], label: "Tokyo" },
+              { id: "sydney", location: [-33.8688, 151.2093], label: "Sydney" },
+              { id: "paris", location: [48.8566, 2.3522], label: "Paris" },
+              { id: "saopaulo", location: [-23.5505, -46.6333], label: "São Paulo" },
+            ]}
+            arcs={[
+              { id: "nyc-london", from: [40.7128, -74.006], to: [51.5074, -0.1278] },
+              { id: "london-dubai", from: [51.5074, -0.1278], to: [25.2048, 55.2708] },
+              { id: "dubai-tokyo", from: [25.2048, 55.2708], to: [35.6762, 139.6503] },
+              { id: "nyc-saopaulo", from: [40.7128, -74.006], to: [-23.5505, -46.6333] },
+              { id: "paris-sydney", from: [48.8566, 2.3522], to: [-33.8688, 151.2093] },
+            ]}
+            dark={1}
+            mapBrightness={2}
+            baseColor={[0.15, 0.15, 0.2]}
+            markerColor={[0.5, 0.55, 0.98]}
+            arcColor={[0.5, 0.55, 0.98]}
+            glowColor={[0.1, 0.1, 0.15]}
+          />
+        </div>
       </div>
     </section>
   );
