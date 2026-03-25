@@ -19,7 +19,6 @@ import { TestimonialsColumn, type Testimonial } from "@/components/ui/testimonia
 import { Globe as CobeGlobe } from "@/components/ui/cobe-globe";
 import { FaqsSection } from "@/components/ui/faqs-1";
 import { SplineScene } from "@/components/ui/splite";
-import { Spotlight } from "@/components/ui/spotlight";
 import { DottedSurface } from "@/components/ui/dotted-surface";
 import { ButtonWithIcon } from "@/components/ui/button-with-icon";
 import { FlowHoverButton } from "@/components/ui/flow-hover-button";
@@ -29,9 +28,6 @@ import Image from "next/image";
 function HeroSection() {
   return (
     <section className="relative min-h-screen flex flex-col overflow-hidden">
-      {/* Spotlight effect */}
-      <Spotlight className="-top-40 left-0 md:left-60 md:-top-20" fill="white" />
-
       <div className="flex-1 flex flex-col lg:flex-row items-center max-w-6xl mx-auto px-4 pt-28 pb-12 w-full">
         {/* Left: Text content */}
         <div className="flex-1 relative z-10 flex flex-col justify-center lg:pr-8">
