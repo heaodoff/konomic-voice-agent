@@ -16,7 +16,7 @@ import {
 import { Navbar1 } from "@/components/ui/navbar-1";
 import { PricingSection } from "@/components/ui/pricing";
 import { TestimonialsColumn, type Testimonial } from "@/components/ui/testimonials-columns-1";
-import { WorldMap } from "@/components/ui/world-map";
+import RotatingEarth from "@/components/ui/wireframe-dotted-globe";
 import { FaqsSection } from "@/components/ui/faqs-1";
 import { SplineScene } from "@/components/ui/splite";
 import { Spotlight } from "@/components/ui/spotlight";
@@ -522,31 +522,7 @@ function IntegrationsSection() {
           ))}
         </div>
 
-        <WorldMap
-          lineColor="#818cf8"
-          dots={[
-            {
-              start: { lat: 40.7128, lng: -74.006 },
-              end: { lat: 51.5074, lng: -0.1278 },
-            },
-            {
-              start: { lat: 51.5074, lng: -0.1278 },
-              end: { lat: 25.2048, lng: 55.2708 },
-            },
-            {
-              start: { lat: 25.2048, lng: 55.2708 },
-              end: { lat: 35.6762, lng: 139.6503 },
-            },
-            {
-              start: { lat: 40.7128, lng: -74.006 },
-              end: { lat: -33.8688, lng: 151.2093 },
-            },
-            {
-              start: { lat: 48.8566, lng: 2.3522 },
-              end: { lat: -22.9068, lng: -43.1729 },
-            },
-          ]}
-        />
+        <RotatingEarth width={1100} height={600} className="mx-auto" />
       </div>
     </section>
   );
