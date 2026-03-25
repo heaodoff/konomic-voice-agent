@@ -16,7 +16,7 @@ import {
 import { Navbar1 } from "@/components/ui/navbar-1";
 import { PricingSection } from "@/components/ui/pricing";
 import { TestimonialsColumn, type Testimonial } from "@/components/ui/testimonials-columns-1";
-import { Globe } from "@/components/ui/cobe-globe";
+import { Globe as CobeGlobe } from "@/components/ui/cobe-globe";
 import { FaqsSection } from "@/components/ui/faqs-1";
 import { SplineScene } from "@/components/ui/splite";
 import { Spotlight } from "@/components/ui/spotlight";
@@ -523,7 +523,7 @@ function IntegrationsSection() {
         </div>
 
         <div className="max-w-lg mx-auto">
-          <Globe
+          <CobeGlobe
             markers={[
               { id: "nyc", location: [40.7128, -74.006], label: "New York" },
               { id: "london", location: [51.5074, -0.1278], label: "London" },
