@@ -22,6 +22,7 @@ import { SplineScene } from "@/components/ui/splite";
 import { Spotlight } from "@/components/ui/spotlight";
 import { DottedSurface } from "@/components/ui/dotted-surface";
 import { ButtonWithIcon } from "@/components/ui/button-with-icon";
+import { FlowHoverButton } from "@/components/ui/flow-hover-button";
 import Image from "next/image";
 
 // ─── HERO ───────────────────────────────────────────────
@@ -77,13 +78,13 @@ function HeroSection() {
             transition={{ duration: 0.5, delay: 0.3 }}
           >
             <ButtonWithIcon href="#pricing">Get Started</ButtonWithIcon>
-            <a
+            <FlowHoverButton
               href="tel:+15075411684"
-              className="inline-flex items-center justify-center gap-2 px-8 py-3.5 text-base font-semibold text-foreground bg-transparent rounded-full border border-border hover:bg-accent transition-colors"
+              icon={<Phone className="h-4 w-4" />}
+              hoverText="+1 (507) 541-1684"
             >
-              <Phone className="h-4 w-4" />
               Call Our AI Demo
-            </a>
+            </FlowHoverButton>
           </motion.div>
 
           <motion.p
@@ -630,13 +631,13 @@ function FinalCTASection() {
           transition={{ duration: 0.5, delay: 0.2 }}
         >
           <ButtonWithIcon href="#pricing">Get Started</ButtonWithIcon>
-          <a
+          <FlowHoverButton
             href="tel:+15075411684"
-            className="inline-flex items-center justify-center gap-2 px-8 py-3.5 text-base font-semibold text-foreground border border-border rounded-full hover:bg-accent transition-colors"
+            icon={<Phone className="h-4 w-4" />}
+            hoverText="+1 (507) 541-1684"
           >
-            <Phone className="h-4 w-4" />
-            Call +1 (507) 541-1684
-          </a>
+            Call Our AI Demo
+          </FlowHoverButton>
         </motion.div>
       </div>
     </section>
